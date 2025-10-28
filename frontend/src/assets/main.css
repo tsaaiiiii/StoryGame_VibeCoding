@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', 'Noto Sans TC', ui-sans-serif, system-ui;
+  min-height: 100vh;
+  background-color: #F8F3ED;
+  color: #5C5145;
+}
+
+a {
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+}
+
+.app-shell {
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--theme-base-color, #F8F3ED);
+  color: var(--theme-text-color, #5C5145);
+  transition: background-color 350ms ease-in-out, color 350ms ease-in-out;
+  overflow: hidden;
+}
+
+.app-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--theme-gradient, linear-gradient(135deg, #E9DED1, #D4BBA4));
+  opacity: 0.9;
+  transition: opacity 400ms ease-in-out;
+}
+
+.app-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--theme-image, none);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: var(--theme-image-opacity, 0.38);
+  transition: opacity 400ms ease-in-out;
+  will-change: opacity;
+}
+
+.app-shell__scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.55), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.45), transparent 50%),
+    linear-gradient(var(--theme-scrim-start, rgba(248, 243, 237, 0.8)), var(--theme-scrim-end, rgba(248, 243, 237, 0.8)));
+  pointer-events: none;
+}
+
+.app-shell__content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
